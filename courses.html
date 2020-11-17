@@ -1,0 +1,265 @@
+<!DOCTYPE HTML>
+<!--
+	Spatial by TEMPLATED
+	templated.co @templatedco
+	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
+-->
+<html>
+
+<head>
+    <title>CourseRatings: Courses</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <!-- <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script> -->
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <!-- <link rel="stylesheet" href="http://www.courseratings.ca/assets/css/maintest.css" type="text/css"/> -->
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+    <link rel="manifest" href="favicon/site.webmanifest">
+    <meta name="description" content="UBC Course reviews for ">
+    <meta name="keywords" content="ubc courses, course reviews, ubc courses, course ratings, ubc course ratings, canada course, ubc faculties">
+	<meta name="author" content="courseratings">
+  	<meta name="copyright" content="courseratings">
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header id="header">
+        <h1><strong><a href="index.html">Course Ratings</a></strong></h1>
+        <nav id="nav">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="faculties.html">Courses</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <a href="#menu" class="navPanelToggle"><span class="fa fa-bars"></span></a>
+
+    <!-- Main -->
+    <section id="main" class="wrapper">
+        <div class="container">
+
+            <!-- <header class="major special">
+                <h2>Course Reviews</h2>
+                <p>Share your experience or learn from others!</p>
+            </header> -->
+
+            <p class="courses"></p>
+
+            <div class="card-group my-3">
+                <div class="card">
+                  <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
+                  <div class="card-body text-danger">
+                    <h5 class="card-title">Course Average</h5>
+                    <p class="card-text course-average">-</p>
+                    <!-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
+                  </div>
+                </div>
+                <div class="card">
+                  <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
+                  <div class="card-body text-danger">
+                    <h5 class="card-title">Standard Deviation</h5>
+                    <p class="card-text standard-deviation">-</p>
+                    <!-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
+                  </div>
+                </div>
+                <div class="card">
+                  <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
+                  <div class="card-body text-danger">
+                    <h5 class="card-title">Highest Grade</h5>
+                    <p class="card-text highest-grade">-</p>
+                    <!-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
+                  </div>
+                </div>
+                <div class="card">
+                    <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
+                    <div class="card-body text-danger">
+                      <h5 class="card-title">Lowest Grade</h5>
+                      <p class="card-text lowest-grade">-</p>
+                      <!-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
+                    </div>
+                  </div>
+                  <div class="card">
+                    <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
+                    <div class="card-body text-danger">
+                      <h5 class="card-title"># of Pass</h5>
+                      <p class="card-text pass">-</p>
+                      <!-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
+                    </div>
+                  </div>
+                  <div class="card">
+                    <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
+                    <div class="card-body text-danger">
+                      <h5 class="card-title"># of Fail</h5>
+                      <p class="card-text fail">-</p>
+                      <!-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
+                    </div>
+                  </div>
+            </div>
+
+            <!-- Collapsible Buttons (Grade Distribution & Remaining Seats-->
+            <button class="button special my-3 responsive" data-toggle="collapse" data-target="#gradedistribution">Grade Distribution</button>
+            <button class="button special my-3 responsive" data-toggle="collapse" data-target="#seats">Remaining Seats</button>
+
+            <div id="gradedistribution" class="collapse">
+                <!-- Add Histogram here-->
+                <canvas id="myChart" width="200" height="100"></canvas>
+                <p>*Data taken as of 2018W</p>
+            </div>
+
+            <div id="seats" class="collapse">
+                <p id="getSeats">Loading</p>
+                <p>*Data taken live</p>
+            </div>
+
+            <!-- Reviews List -->
+            <div class="review-window">
+                <h3>Reviews:</h3>
+                <ul class="review-list list-group"></ul>
+            </div>
+
+            <!-- Review Submission Form-->
+            <form class="review-block my-3">
+                <h3>Submit a Review here:</h3>
+                <div class="row uniform 50%">
+                    <div class="6u 12u$(xsmall) reviewtitle">
+                        <input type="text" name="title" id="title" value placeholder="Review Title" required>
+                    </div>
+                    <div class="6u 12u$(xsmall)">
+                        <input type="text" name="name" id="name" value placeholder="Name (Optional)">
+                    </div>
+                    <div class="recommend">
+                        <p class="">Would you recommend this class? <br class="mobile-br"><span class="star-span">
+                                <span onclick="fillStar(this)" class="recommend1">&#9734;</span>
+                                <span onclick="fillStar(this)" class="recommend2">&#9734;</span>
+                                <span onclick="fillStar(this)" class="recommend3">&#9734;</span>
+                                <span onclick="fillStar(this)" class="recommend4">&#9734;</span>
+                                <span onclick="fillStar(this)" class="recommend5">&#9734;</span>
+                            </span></p>
+                    </div>
+                    <div class="difficult">
+                        <p class="">How difficult is this class? <br class="mobile-br"><span class="star-span">
+                                <span onclick="fillStar(this)" class="difficult1">&#9734;</span>
+                                <span onclick="fillStar(this)" class="difficult2">&#9734;</span>
+                                <span onclick="fillStar(this)" class="difficult3">&#9734;</span>
+                                <span onclick="fillStar(this)" class="difficult4">&#9734;</span>
+                                <span onclick="fillStar(this)" class="difficult5">&#9734;</span>
+                            </span></p>
+                    </div>
+                    <div class="difficult">
+                        <p class="">How interesting is this class? <br class="mobile-br"><span class="star-span">
+                                <span onclick="fillStar(this)" class="interesting1">&#9734;</span>
+                                <span onclick="fillStar(this)" class="interesting2">&#9734;</span>
+                                <span onclick="fillStar(this)" class="interesting3">&#9734;</span>
+                                <span onclick="fillStar(this)" class="interesting4">&#9734;</span>
+                                <span onclick="fillStar(this)" class="interesting5">&#9734;</span>
+                            </span></p>
+                    </div>
+
+                    <!-- </div> -->
+                    <div class="12u$ reviewtext">
+                        <textarea name="reviewtext" id="review" placeholder="Enter Your Review" rows="6"
+                            required></textarea>
+                    </div>
+                    <div class="12u$">
+                        <ul class="actions submit-review">
+                            <li>
+                                <input type="submit" value="submit review" class="special">
+                            </li>
+                            <li>
+                                <input type="reset" value="Reset">
+                            </li>
+                            <li>
+                                <div class="gohome">
+                                    <a href="index.html" class="button alt" style="width:100%">Back To Home</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="thanks"></div>
+                </div>
+            </form>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="footer">
+        <div class="container">
+            <!-- <ul class="icons">
+						<li><a href="#" class="icon fa-facebook"></a></li>
+						<li><a href="#" class="icon fa-twitter"></a></li>
+						<li><a href="#" class="icon fa-instagram"></a></li>
+					</ul> -->
+            <ul class="copyright">
+                <li>&copy; CourseRatings</li>
+                <li><a href="termsandconditions.html">Terms and Conditions</a></li>
+                <li><a href="about.html">About Us</a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-141015455-6"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag() { dataLayer.push(arguments); }
+		gtag('js', new Date());
+		gtag('config', 'UA-141015455-6');
+	</script>
+    <!-- <script src="http://cdn.date-fns.org/v1.9.0/date_fns.min.js"></script> -->
+    <script src="assets/js/date.js"></script>
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+                https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-analytics.js"></script>
+
+    <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyDQxXWuGWyigNvTEELxJHpbTBcFAebGs3Q",
+            authDomain: "courseratings-ee8a9.firebaseapp.com",
+            databaseURL: "https://courseratings-ee8a9.firebaseio.com",
+            projectId: "courseratings-ee8a9",
+            storageBucket: "courseratings-ee8a9.appspot.com",
+            messagingSenderId: "261975219665",
+            appId: "1:261975219665:web:6cf4b7b88412c9fc9354f0",
+            measurementId: "G-S5KZQJY24W"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        firebase.analytics();
+        const db = firebase.firestore();
+    </script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/skel.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/2018WGrades.js"></script>
+    <script src="assets/js/2019WCourses.js"></script>
+    <script src="assets/js/mail.js"></script>
+    <script src="assets/js/seatCheck.js"></script>
+    <script src="assets/js/emailtracking.js"></script>
+    <script src="assets/js/reviews.js"></script>
+    <script src="assets/js/reviewUI.js"></script>
+    <script src="node_modules/chart.js/dist/Chart.js"></script>
+    <script src="assets/js/courses.js"></script>
+
+</body>
+
+</html>
